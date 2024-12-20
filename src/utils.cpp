@@ -2,20 +2,76 @@
 
 // funciton to calculate all the distances between the cities
 vector<vector<double>> Utils::calculateAllDistances(vector<City> cities) {
-    // for each index representing the city ID i will store the distances to all other cities, sorted by the distance
+    // print info city 1
     vector<vector<double>> distances;
+    // create a vector with 0 to add in distances
+    //vector<double> zero(cities.size(), 0);
+    //distances.push_back(zero);
     for (int i = 0; i < (int)cities.size(); i++) {
         vector<double> distancesToCities;
         for (int j = 0; j < (int)cities.size(); j++) {
+            if (i == 0 || j == 0) {
+                distancesToCities.push_back(0);
+                continue;
+            }
+            if (i > j) {
+                // if i > j, the distance is already calculated
+                distancesToCities.push_back(distances[j][i]);
+                continue;
+            }
             if (i == j) {
-                distancesToCities.push_back(-1);
+                distancesToCities.push_back(0);
                 continue;
             }
             distancesToCities.push_back(cities[i].returnDistanceTo(j));
         }
+        // print distancesToCities
         distances.push_back(distancesToCities);
     }
+
+    return distances;
     
+}
+
+vector<int> selectCandidates(int numCities, int currentCity, vector<City> cities, vector<int> path) {
+    vector<pair<int, double>> candidates;  // {cityId, distance}
+    //create candidates list based on the current city
+
+    for (int i = 1; i <= numCities; i++) {
+        if (i == currentCity)
+            continue;
+
+        // check if the city is already in the path
+        if (find(path.begin(), path.end(), i) != path.end())
+            continue;
+
+        double distance = cities[currentCity].returnDistanceTo(i);
+        candidates.push_back({i, distance});
+    }
+
+    //sort candidates list by distance
+    sort(candidates.begin(), candidates.end(), [](pair<int, double> a, pair<int, double> b) {
+        return a.second < b.second;
+    });
+
+    // find the size of the candidates list based on cmin + (cmax - cmin) * alpha
+    double cmin = candidates[0].second;
+    double cmax = candidates[candidates.size() - 1].second;
+    double alpha = 0.5;
+    double size = cmin + (cmax - cmin) * alpha;
+
+    vector<int> selectedCandidates;
+    // return all candidates with distance <= size
+    for (auto candidate : candidates) {
+        // check if the candidate is already in the path
+        if (candidate.second > size) {
+            break;
+        }
+        selectedCandidates.push_back(candidate.first);
+    }
+
+    return selectedCandidates;
+
 }
 
 double Utils::findPath(int initialCityId, vector<City> cities, int numCities) {
@@ -28,43 +84,30 @@ double Utils::findPath(int initialCityId, vector<City> cities, int numCities) {
     
     double pathCost = 0;
 
-    vector<vector<double>> distances = calculateAllDistances(cities);
+    // vector<vector<double>> distances = calculateAllDistances(cities);
 
-    // ARRUMAR AQUI
+    while ((int) path.size() < numCities) {
 
-    while ((int)path.size() < numCities) {
-        double minDistance = 5000000;
-        int nextCityId = 0;
+        vector<int> candidatesList = selectCandidates(numCities, currentCityId, cities, path);
 
-        for (auto city : cities) {
-            if (city.getId() == 0)
-                continue;
+        // select random city from candidates list
 
-            if (city.getId() == currentCityId)
-                continue;
+        int nextCityId = candidatesList[rand() % candidatesList.size()];
 
-            if (find(path.begin(), path.end(), city.getId()) != path.end())
-                continue;
-
-            double distance = city.returnDistanceTo(currentCityId);
-            if (distance < minDistance) {
-                if (minDistance != 5000000)
-                    pathCost -= minDistance;
-
-                pathCost += distance;
-                minDistance = distance;
-                nextCityId = city.getId();
-            }
-        }
+        pathCost += cities[currentCityId].returnDistanceTo(nextCityId);
 
         path.push_back(nextCityId);
         currentCityId = nextCityId;
+
     }
-    
-    path.push_back(initialCityId);
-    pathCost += cities[currentCityId].returnDistanceTo(initialCityId);
 
     this->path = path;
+
+    pathCost += cities[currentCityId].returnDistanceTo(initialCityId);
+
+    for (int i = 0; i < (int)path.size(); i++) {
+        cout << path[i] << " ";
+    }
 
     return pathCost;
 }
@@ -167,13 +210,25 @@ vector<string> Utils::findPathInfo(ifstream& inputFile) {
     return results;
 }
 
-// constructive heuristic to find the initial path using the nearest neighbor algorithm (greedy)
-double Utils::constructive_heuristic(ifstream& inputFile, int numCities, string distance_type, bool useCenterCity) {
+double Utils::storeCities(ifstream& inputFile, int numCities, string distance_type) {
 
     vector<City> cities;
     cities = this->receiveCoordinatesParameters(inputFile, numCities, distance_type);
 
     this->cities = cities;
+
+    return 0;
+}
+
+// constructive heuristic to find the initial path using the nearest neighbor algorithm (greedy)
+double Utils::constructive_heuristic(int numCities, bool useCenterCity) {
+
+    vector<City> cities;
+    /* cities = this->receiveCoordinatesParameters(inputFile, numCities, distance_type);
+
+    this->cities = cities; */
+
+    cities = this->getCities();
 
     int initialCityId = 1;
     if ( useCenterCity )
@@ -181,7 +236,6 @@ double Utils::constructive_heuristic(ifstream& inputFile, int numCities, string 
 
 
     double pathCost = this->findPath(initialCityId, cities, numCities);
-
 
     this->pathCost = pathCost;
 

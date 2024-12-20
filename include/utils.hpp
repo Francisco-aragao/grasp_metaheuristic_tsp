@@ -26,11 +26,12 @@ class Utils {
         int findCenterCity(vector<City> cities, int numCities);
         vector<City> receiveCoordinatesParameters(ifstream& inputFile, int numCities, string DISTANCE_TYPE);
         vector<string> findPathInfo(ifstream& inputFile);
-        double constructive_heuristic(ifstream& inputFile, int numCities, string distance_type, bool useCenterCity);
+        double constructive_heuristic(int numCities, bool useCenterCity);
         double two_opt(vector<City> cities);
         double three_opt(vector<City> cities);
         double double_bridge(vector<City> cities);
         vector<vector<double>> calculateAllDistances(vector<City> cities);
+        double storeCities(ifstream& inputFile, int numCities, string distance_type);
 
 };
 
