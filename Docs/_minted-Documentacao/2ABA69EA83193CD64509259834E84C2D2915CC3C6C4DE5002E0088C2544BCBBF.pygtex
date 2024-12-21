@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// compilação}
+\PYG{n}{make}
+
+\PYG{c+c1}{// limpar arquivos gerados}
+\PYG{n}{make}\PYG{+w}{ }\PYG{n}{clean}
+
+\PYG{c+c1}{// rodar programa}
+\PYG{n}{make}\PYG{+w}{ }\PYG{n}{run}\PYG{+w}{ }\PYG{n}{ARGS}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZlt{}pasta com instâncias de entrada\PYGZgt{} \PYGZlt{}tipo da cidade inicial\PYGZgt{} \PYGZlt{}alpha\PYGZgt{} \PYGZlt{}numero\PYGZbs{}\PYGZus{}de\PYGZbs{}\PYGZus{}iteracoes\PYGZgt{}\PYGZdq{}}
+\PYG{c+c1}{// \PYGZlt{}tipo de cidade inicial\PYGZgt{} = 0 para usar a primeira cidade e 1 para usar cidade central}
+\PYG{c+c1}{// idealmente \PYGZlt{}alpha\PYGZgt{} deve ser entre 0 e 1}
+\end{Verbatim}

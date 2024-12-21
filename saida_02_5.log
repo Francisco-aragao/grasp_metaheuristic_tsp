@@ -1,0 +1,562 @@
+Running: ./bin/tsp_constructive_heuristic ./tsp_input/EUC_2D/ 1 0.2 5
+./bin/tsp_constructive_heuristic ./tsp_input/EUC_2D/ 1 0.2 5
+Results for ./tsp_input/EUC_2D/st70.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 1398.69
+Final Path Cost: 843.809
+VND Time: 0.55835 seconds
+GRASP Iteration 2:
+Initial Path Cost: 1430.24
+Final Path Cost: 809.482
+VND Time: 0.331058 seconds
+GRASP Iteration 3:
+Initial Path Cost: 1239.15
+Final Path Cost: 768.229
+VND Time: 0.426618 seconds
+GRASP Iteration 4:
+Initial Path Cost: 1285.32
+Final Path Cost: 908.004
+VND Time: 0.536104 seconds
+GRASP Iteration 5:
+Initial Path Cost: 1312.35
+Final Path Cost: 826.905
+VND Time: 0.285778 seconds
+Average Path Cost: 831.286
+Average Elapsed Time: 0.427582 seconds
+Average Initial Path Cost: 1333.15
+
+Best Solution Found:
+Best Path Cost: 768.229
+
+Results for ./tsp_input/EUC_2D/pr144.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 140913
+Final Path Cost: 85370.2
+VND Time: 10.6937 seconds
+GRASP Iteration 2:
+Initial Path Cost: 183811
+Final Path Cost: 100028
+VND Time: 20.3434 seconds
+GRASP Iteration 3:
+Initial Path Cost: 180960
+Final Path Cost: 84778.8
+VND Time: 14.4859 seconds
+GRASP Iteration 4:
+Initial Path Cost: 152604
+Final Path Cost: 83540.9
+VND Time: 11.7839 seconds
+GRASP Iteration 5:
+Initial Path Cost: 175748
+Final Path Cost: 105909
+VND Time: 10.6203 seconds
+Average Path Cost: 91925.4
+Average Elapsed Time: 13.5855 seconds
+Average Initial Path Cost: 166807
+
+Best Solution Found:
+Best Path Cost: 83540.9
+
+Results for ./tsp_input/EUC_2D/pr107.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 121059
+Final Path Cost: 66173.9
+VND Time: 7.22887 seconds
+GRASP Iteration 2:
+Initial Path Cost: 119554
+Final Path Cost: 64568.1
+VND Time: 4.39184 seconds
+GRASP Iteration 3:
+Initial Path Cost: 107558
+Final Path Cost: 60567.7
+VND Time: 5.49136 seconds
+GRASP Iteration 4:
+Initial Path Cost: 120193
+Final Path Cost: 66643.1
+VND Time: 2.5305 seconds
+GRASP Iteration 5:
+Initial Path Cost: 108081
+Final Path Cost: 68648.3
+VND Time: 4.03481 seconds
+Average Path Cost: 65320.2
+Average Elapsed Time: 4.73548 seconds
+Average Initial Path Cost: 115289
+
+Best Solution Found:
+Best Path Cost: 60567.7
+
+Results for ./tsp_input/EUC_2D/kroB100.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 58401.2
+Final Path Cost: 32393.3
+VND Time: 3.28087 seconds
+GRASP Iteration 2:
+Initial Path Cost: 55686
+Final Path Cost: 29490.5
+VND Time: 3.66433 seconds
+GRASP Iteration 3:
+Initial Path Cost: 54103
+Final Path Cost: 31268.3
+VND Time: 1.51767 seconds
+GRASP Iteration 4:
+Initial Path Cost: 54903.7
+Final Path Cost: 33612.9
+VND Time: 2.44917 seconds
+GRASP Iteration 5:
+Initial Path Cost: 60417.9
+Final Path Cost: 34064.7
+VND Time: 4.1982 seconds
+Average Path Cost: 32165.9
+Average Elapsed Time: 3.02205 seconds
+Average Initial Path Cost: 56702.4
+
+Best Solution Found:
+Best Path Cost: 29490.5
+
+Results for ./tsp_input/EUC_2D/kroB200.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 98319.3
+Final Path Cost: 49601.3
+VND Time: 58.8752 seconds
+GRASP Iteration 2:
+Initial Path Cost: 101198
+Final Path Cost: 46124.2
+VND Time: 68.7851 seconds
+GRASP Iteration 3:
+Initial Path Cost: 103354
+Final Path Cost: 47557.4
+VND Time: 62.0642 seconds
+GRASP Iteration 4:
+Initial Path Cost: 93277
+Final Path Cost: 45495.3
+VND Time: 43.2937 seconds
+GRASP Iteration 5:
+Initial Path Cost: 91700.3
+Final Path Cost: 43009.7
+VND Time: 62.1894 seconds
+Average Path Cost: 46357.6
+Average Elapsed Time: 59.0415 seconds
+Average Initial Path Cost: 97569.7
+
+Best Solution Found:
+Best Path Cost: 43009.7
+
+Results for ./tsp_input/EUC_2D/rat195.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 7964.26
+Final Path Cost: 3535.49
+VND Time: 60.205 seconds
+GRASP Iteration 2:
+Initial Path Cost: 7318.49
+Final Path Cost: 3584.97
+VND Time: 67.9413 seconds
+GRASP Iteration 3:
+Initial Path Cost: 7348.41
+Final Path Cost: 3500.45
+VND Time: 41.3174 seconds
+GRASP Iteration 4:
+Initial Path Cost: 7616.02
+Final Path Cost: 3475.72
+VND Time: 26.2229 seconds
+GRASP Iteration 5:
+Initial Path Cost: 7485.31
+Final Path Cost: 3441.73
+VND Time: 80.8631 seconds
+Average Path Cost: 3507.67
+Average Elapsed Time: 55.31 seconds
+Average Initial Path Cost: 7546.5
+
+Best Solution Found:
+Best Path Cost: 3441.73
+
+Results for ./tsp_input/EUC_2D/kroC100.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 58430.9
+Final Path Cost: 31290.9
+VND Time: 2.90347 seconds
+GRASP Iteration 2:
+Initial Path Cost: 48488
+Final Path Cost: 30882.8
+VND Time: 2.42559 seconds
+GRASP Iteration 3:
+Initial Path Cost: 58075.4
+Final Path Cost: 27684.5
+VND Time: 5.02737 seconds
+GRASP Iteration 4:
+Initial Path Cost: 59473.9
+Final Path Cost: 30281.3
+VND Time: 2.07889 seconds
+GRASP Iteration 5:
+Initial Path Cost: 58343.8
+Final Path Cost: 32056.9
+VND Time: 3.11285 seconds
+Average Path Cost: 30439.3
+Average Elapsed Time: 3.10963 seconds
+Average Initial Path Cost: 56562.4
+
+Best Solution Found:
+Best Path Cost: 27684.5
+
+Results for ./tsp_input/EUC_2D/kroD100.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 48978.3
+Final Path Cost: 27810.6
+VND Time: 3.27275 seconds
+GRASP Iteration 2:
+Initial Path Cost: 52050.9
+Final Path Cost: 28907.1
+VND Time: 3.48128 seconds
+GRASP Iteration 3:
+Initial Path Cost: 48294.5
+Final Path Cost: 30940.9
+VND Time: 2.64389 seconds
+GRASP Iteration 4:
+Initial Path Cost: 49833.8
+Final Path Cost: 30439.3
+VND Time: 5.47243 seconds
+GRASP Iteration 5:
+Initial Path Cost: 47514.4
+Final Path Cost: 27698.4
+VND Time: 3.35418 seconds
+Average Path Cost: 29159.2
+Average Elapsed Time: 3.6449 seconds
+Average Initial Path Cost: 49334.4
+
+Best Solution Found:
+Best Path Cost: 27698.4
+
+Results for ./tsp_input/EUC_2D/kroA150.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 87023.2
+Final Path Cost: 41263.6
+VND Time: 22.8134 seconds
+GRASP Iteration 2:
+Initial Path Cost: 76057.5
+Final Path Cost: 40069.1
+VND Time: 10.3767 seconds
+GRASP Iteration 3:
+Initial Path Cost: 77809.9
+Final Path Cost: 40181.7
+VND Time: 24.8842 seconds
+GRASP Iteration 4:
+Initial Path Cost: 79417.9
+Final Path Cost: 44282.3
+VND Time: 6.87187 seconds
+GRASP Iteration 5:
+Initial Path Cost: 83060
+Final Path Cost: 39097.7
+VND Time: 10.9972 seconds
+Average Path Cost: 40978.9
+Average Elapsed Time: 15.1887 seconds
+Average Initial Path Cost: 80673.7
+
+Best Solution Found:
+Best Path Cost: 39097.7
+
+Results for ./tsp_input/EUC_2D/berlin52.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 12836
+Final Path Cost: 8878.81
+VND Time: 0.199253 seconds
+GRASP Iteration 2:
+Initial Path Cost: 15226.1
+Final Path Cost: 9351.45
+VND Time: 0.325605 seconds
+GRASP Iteration 3:
+Initial Path Cost: 13362.5
+Final Path Cost: 8596.59
+VND Time: 0.244536 seconds
+GRASP Iteration 4:
+Initial Path Cost: 12601.9
+Final Path Cost: 8623.91
+VND Time: 0.192503 seconds
+GRASP Iteration 5:
+Initial Path Cost: 14574.3
+Final Path Cost: 10160.5
+VND Time: 0.12681 seconds
+Average Path Cost: 9122.26
+Average Elapsed Time: 0.217741 seconds
+Average Initial Path Cost: 13720.2
+
+Best Solution Found:
+Best Path Cost: 8596.59
+
+Results for ./tsp_input/EUC_2D/pr76.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 243433
+Final Path Cost: 160098
+VND Time: 1.09845 seconds
+GRASP Iteration 2:
+Initial Path Cost: 234305
+Final Path Cost: 155938
+VND Time: 0.666871 seconds
+GRASP Iteration 3:
+Initial Path Cost: 250043
+Final Path Cost: 150104
+VND Time: 1.34261 seconds
+GRASP Iteration 4:
+Initial Path Cost: 225006
+Final Path Cost: 158135
+VND Time: 0.447714 seconds
+GRASP Iteration 5:
+Initial Path Cost: 242132
+Final Path Cost: 153599
+VND Time: 0.745606 seconds
+Average Path Cost: 155575
+Average Elapsed Time: 0.86025 seconds
+Average Initial Path Cost: 238984
+
+Best Solution Found:
+Best Path Cost: 150104
+
+Results for ./tsp_input/EUC_2D/pr136.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 259787
+Final Path Cost: 137958
+VND Time: 5.97792 seconds
+GRASP Iteration 2:
+Initial Path Cost: 271799
+Final Path Cost: 137870
+VND Time: 12.0189 seconds
+GRASP Iteration 3:
+Initial Path Cost: 248372
+Final Path Cost: 138473
+VND Time: 5.58013 seconds
+GRASP Iteration 4:
+Initial Path Cost: 235643
+Final Path Cost: 137832
+VND Time: 7.17309 seconds
+GRASP Iteration 5:
+Initial Path Cost: 255189
+Final Path Cost: 133079
+VND Time: 8.8612 seconds
+Average Path Cost: 137042
+Average Elapsed Time: 7.92224 seconds
+Average Initial Path Cost: 254158
+
+Best Solution Found:
+Best Path Cost: 133079
+
+Results for ./tsp_input/EUC_2D/kroB150.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 81427.5
+Final Path Cost: 38801
+VND Time: 11.7221 seconds
+GRASP Iteration 2:
+Initial Path Cost: 78089.3
+Final Path Cost: 39891.3
+VND Time: 22.8494 seconds
+GRASP Iteration 3:
+Initial Path Cost: 73354.9
+Final Path Cost: 37799
+VND Time: 15.9895 seconds
+GRASP Iteration 4:
+Initial Path Cost: 80054.8
+Final Path Cost: 44044.8
+VND Time: 19.6557 seconds
+GRASP Iteration 5:
+Initial Path Cost: 81692
+Final Path Cost: 39051.3
+VND Time: 18.6173 seconds
+Average Path Cost: 39917.5
+Average Elapsed Time: 17.7668 seconds
+Average Initial Path Cost: 78923.7
+
+Best Solution Found:
+Best Path Cost: 37799
+
+Results for ./tsp_input/EUC_2D/pr152.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 208263
+Final Path Cost: 108974
+VND Time: 18.1672 seconds
+GRASP Iteration 2:
+Initial Path Cost: 190480
+Final Path Cost: 103984
+VND Time: 15.547 seconds
+GRASP Iteration 3:
+Initial Path Cost: 212538
+Final Path Cost: 104614
+VND Time: 23.3948 seconds
+GRASP Iteration 4:
+Initial Path Cost: 211981
+Final Path Cost: 107914
+VND Time: 35.6048 seconds
+GRASP Iteration 5:
+Initial Path Cost: 254073
+Final Path Cost: 116151
+VND Time: 15.8556 seconds
+Average Path Cost: 108327
+Average Elapsed Time: 21.7139 seconds
+Average Initial Path Cost: 215467
+
+Best Solution Found:
+Best Path Cost: 103984
+
+Results for ./tsp_input/EUC_2D/kroE100.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 49336.2
+Final Path Cost: 29975.2
+VND Time: 1.68945 seconds
+GRASP Iteration 2:
+Initial Path Cost: 53877.9
+Final Path Cost: 32073.6
+VND Time: 1.72294 seconds
+GRASP Iteration 3:
+Initial Path Cost: 58014
+Final Path Cost: 31456.8
+VND Time: 2.50034 seconds
+GRASP Iteration 4:
+Initial Path Cost: 57623.1
+Final Path Cost: 31886.5
+VND Time: 2.51797 seconds
+GRASP Iteration 5:
+Initial Path Cost: 50167.6
+Final Path Cost: 29213.5
+VND Time: 2.76632 seconds
+Average Path Cost: 30921.1
+Average Elapsed Time: 2.23941 seconds
+Average Initial Path Cost: 53803.8
+
+Best Solution Found:
+Best Path Cost: 29213.5
+
+Results for ./tsp_input/EUC_2D/lin105.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 37048.1
+Final Path Cost: 20098.8
+VND Time: 2.06346 seconds
+GRASP Iteration 2:
+Initial Path Cost: 35755
+Final Path Cost: 20081.7
+VND Time: 2.8087 seconds
+GRASP Iteration 3:
+Initial Path Cost: 36739.4
+Final Path Cost: 21282
+VND Time: 2.75897 seconds
+GRASP Iteration 4:
+Initial Path Cost: 44489.8
+Final Path Cost: 22877.8
+VND Time: 5.13546 seconds
+GRASP Iteration 5:
+Initial Path Cost: 37161.2
+Final Path Cost: 21995.1
+VND Time: 3.37668 seconds
+Average Path Cost: 21267.1
+Average Elapsed Time: 3.22866 seconds
+Average Initial Path Cost: 38238.7
+
+Best Solution Found:
+Best Path Cost: 20081.7
+
+Results for ./tsp_input/EUC_2D/rat99.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 2917.6
+Final Path Cost: 1712.68
+VND Time: 1.94029 seconds
+GRASP Iteration 2:
+Initial Path Cost: 2872.1
+Final Path Cost: 1564.9
+VND Time: 2.47677 seconds
+GRASP Iteration 3:
+Initial Path Cost: 3128.24
+Final Path Cost: 1790.44
+VND Time: 2.25601 seconds
+GRASP Iteration 4:
+Initial Path Cost: 3109.23
+Final Path Cost: 1687.28
+VND Time: 1.33093 seconds
+GRASP Iteration 5:
+Initial Path Cost: 2746.99
+Final Path Cost: 1590.55
+VND Time: 2.63638 seconds
+Average Path Cost: 1669.17
+Average Elapsed Time: 2.12808 seconds
+Average Initial Path Cost: 2954.83
+
+Best Solution Found:
+Best Path Cost: 1564.9
+
+Results for ./tsp_input/EUC_2D/pr124.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 177114
+Final Path Cost: 94295.5
+VND Time: 5.01031 seconds
+GRASP Iteration 2:
+Initial Path Cost: 194746
+Final Path Cost: 84280.4
+VND Time: 6.99198 seconds
+GRASP Iteration 3:
+Initial Path Cost: 190354
+Final Path Cost: 95227.3
+VND Time: 7.60306 seconds
+GRASP Iteration 4:
+Initial Path Cost: 162831
+Final Path Cost: 91797.4
+VND Time: 14.5932 seconds
+GRASP Iteration 5:
+Initial Path Cost: 168059
+Final Path Cost: 86636.7
+VND Time: 11.1789 seconds
+Average Path Cost: 90447.5
+Average Elapsed Time: 9.0755 seconds
+Average Initial Path Cost: 178621
+
+Best Solution Found:
+Best Path Cost: 84280.4
+
+Results for ./tsp_input/EUC_2D/kroA100.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 57347
+Final Path Cost: 29893.3
+VND Time: 2.569 seconds
+GRASP Iteration 2:
+Initial Path Cost: 55256.2
+Final Path Cost: 32036.5
+VND Time: 2.43092 seconds
+GRASP Iteration 3:
+Initial Path Cost: 53364.5
+Final Path Cost: 26489.8
+VND Time: 2.07451 seconds
+GRASP Iteration 4:
+Initial Path Cost: 49811.8
+Final Path Cost: 26936.8
+VND Time: 2.19797 seconds
+GRASP Iteration 5:
+Initial Path Cost: 56737.7
+Final Path Cost: 33299.2
+VND Time: 3.05451 seconds
+Average Path Cost: 29731.1
+Average Elapsed Time: 2.46538 seconds
+Average Initial Path Cost: 54503.4
+
+Best Solution Found:
+Best Path Cost: 26489.8
+
+Results for ./tsp_input/EUC_2D/kroA200.tsp:
+GRASP Iteration 1:
+Initial Path Cost: 103965
+Final Path Cost: 45935.3
+VND Time: 63.438 seconds
+GRASP Iteration 2:
+Initial Path Cost: 109299
+Final Path Cost: 48943.1
+VND Time: 70.3243 seconds
+GRASP Iteration 3:
+Initial Path Cost: 107718
+Final Path Cost: 48840.3
+VND Time: 89.0121 seconds
+GRASP Iteration 4:
+Initial Path Cost: 97211
+Final Path Cost: 46491.5
+VND Time: 32.4184 seconds
+GRASP Iteration 5:
+Initial Path Cost: 96059.2
+Final Path Cost: 45352.4
+VND Time: 38.3875 seconds
+Average Path Cost: 47112.5
+Average Elapsed Time: 58.716 seconds
+Average Initial Path Cost: 102851
+
+Best Solution Found:
+Best Path Cost: 45352.4
+

@@ -7,15 +7,15 @@ using namespace std;
 namespace fs = std::filesystem;
 
 Utils utils;
-const int GRASP_ITERATIONS = 5; // Number of GRASP iterations
 
-void grasp(ifstream& inputFile, bool useCenterCity) {
+void grasp(ifstream& inputFile, bool useCenterCity, double alpha, int iterations) {
     double bestPathCost = std::numeric_limits<double>::infinity();
     vector<int> bestPath;
     vector<City> bestCities;
     std::clock_t start = std::clock();
     double totalElapsedTime = 0;
     double totalPathCost = 0;
+    double totalInitialPathCost = 0;
 
     // Read and process the input file
     vector<string> res = utils.findPathInfo(inputFile);
@@ -23,27 +23,24 @@ void grasp(ifstream& inputFile, bool useCenterCity) {
     string distance_type = res[1];
 
     utils.storeCities(inputFile, numCities, distance_type);
-
     
-    for (int iteration = 0; iteration < GRASP_ITERATIONS; iteration++) {
+    for (int iteration = 0; iteration < iterations; iteration++) {
         start = std::clock();  
 
         cout << "GRASP Iteration " << iteration + 1 << ":\n";
 
-
-        // **Construction Phase**
-        double pathCost = utils.constructive_heuristic(numCities, useCenterCity); // Add randomization
+        // construct the initial path
+        double pathCost = utils.constructive_heuristic(numCities, useCenterCity, alpha);
+        totalInitialPathCost += pathCost;
 
         cout << "Initial Path Cost: " << pathCost << "\n";
-        //double originalPathCost = pathCost;
 
-        // **Local Search Phase**
         vector<City> currentCities = utils.getCities();
         vector<int> currentPath = utils.getPath();
 
         bool improved = true;
 
-        
+        // starting local search
         while (improved) {
             improved = false;
 
@@ -61,13 +58,6 @@ void grasp(ifstream& inputFile, bool useCenterCity) {
                 improved = true;
                 continue;
             }
-
-            /* newPathCost = utils.double_bridge(currentCities);
-            if (newPathCost < pathCost) {
-                pathCost = newPathCost;
-                improved = true;
-                continue;
-            } */
         }
 
         // Update the best solution if needed
@@ -78,23 +68,24 @@ void grasp(ifstream& inputFile, bool useCenterCity) {
         }
 
         cout << "Final Path Cost: " << pathCost << "\n";
-        double VNDTime = double(std::clock() - start) / CLOCKS_PER_SEC;
+        double GraspTime = double(std::clock() - start) / CLOCKS_PER_SEC;
 
-        totalElapsedTime += VNDTime;
+        totalElapsedTime += GraspTime;
         totalPathCost += pathCost;
 
-        cout << "VND Time: " << VNDTime << " seconds\n";
-        
+        cout << "Grasp Time: " << GraspTime << " seconds\n";        
     }
     
-    double avgPathCost = totalPathCost / GRASP_ITERATIONS;
-    double avgElapsedTime = totalElapsedTime / GRASP_ITERATIONS;
+    double avgPathCost = totalPathCost / iterations;
+    double avgElapsedTime = totalElapsedTime / iterations;
+    double avgInitialPathCost = totalInitialPathCost / iterations;
     cout << "Average Path Cost: " << avgPathCost << "\n";
     cout << "Average Elapsed Time: " << avgElapsedTime << " seconds\n";
+    cout << "Average Initial Path Cost: " << avgInitialPathCost << "\n";
 
     // Output the best solution found
     cout << "\nBest Solution Found:\n";
-    cout << "Path Cost: " << bestPathCost << "\n";
+    cout << "Best Path Cost: " << bestPathCost << "\n";
     /* cout << "Path: ";
     for (int city : bestPath) {
         cout << city << " ";
@@ -105,16 +96,17 @@ void grasp(ifstream& inputFile, bool useCenterCity) {
 int main(int argc, char* argv[]) {
 
     // receive input folder path and type of city to start in the command line
-    if (argc != 3) {
-        cerr << "Usage: " << argv[0] << " <folder_path>" << " <use_center_city>" << endl;
-        cerr << "Example: " << argv[0] << " ./tsp_files 1 -> using center city" << endl;
-        cerr << "Example: " << argv[0] << " ./tsp_files 0 -> using first city" << endl;
+    if (argc != 5) {
+        cerr << "Usage: " << argv[0] << " <folder_path>" << " <use_center_city>" << "<alpha>" << "<iterations>" << endl;
+        cerr << "Example: " << argv[0] << " ./tsp_files 1 -> using center city" << "0.5" << 5 << endl;
+        cerr << "Example: " << argv[0] << " ./tsp_files 0 -> using first city" << "0.2" << 10 << endl;
         return 1;
     }
 
     string folderPath = argv[1];
     bool useCenterCity = stoi(argv[2]);
-
+    double alpha = stod(argv[3]);
+    int iterations = stoi(argv[4]);
 
     // Process all .tsp files in the folder
     for (const auto& entry : fs::directory_iterator(folderPath)) {
@@ -129,7 +121,7 @@ int main(int argc, char* argv[]) {
             }
 
             cout << "Results for " << filename << ":\n";
-            grasp(inputFile, useCenterCity);
+            grasp(inputFile, useCenterCity, alpha, iterations);
         }
     }
 

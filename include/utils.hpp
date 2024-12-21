@@ -22,16 +22,15 @@ class Utils {
         void setPathCost(double pathCost) {this->pathCost = pathCost;};
         void setCities(vector<City> cities) {this->cities = cities;};
         void setPath(vector<int> path) {this->path = path;};
-        double findPath(int initialCityId, vector<City> cities, int numCities);
+        double findPath(int initialCityId, vector<City> cities, int numCities, double alpha);
         int findCenterCity(vector<City> cities, int numCities);
         vector<City> receiveCoordinatesParameters(ifstream& inputFile, int numCities, string DISTANCE_TYPE);
         vector<string> findPathInfo(ifstream& inputFile);
-        double constructive_heuristic(int numCities, bool useCenterCity);
+        double constructive_heuristic(int numCities, bool useCenterCity, double alpha);
         double two_opt(vector<City> cities);
         double three_opt(vector<City> cities);
-        double double_bridge(vector<City> cities);
-        vector<vector<double>> calculateAllDistances(vector<City> cities);
         double storeCities(ifstream& inputFile, int numCities, string distance_type);
+        vector<int> selectCandidates(int numCities, int currentCity, vector<City> cities, vector<int> path, double alpha);
 
 };
 

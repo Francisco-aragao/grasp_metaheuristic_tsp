@@ -1,39 +1,7 @@
 #include "../include/utils.hpp"
 
-// funciton to calculate all the distances between the cities
-vector<vector<double>> Utils::calculateAllDistances(vector<City> cities) {
-    // print info city 1
-    vector<vector<double>> distances;
-    // create a vector with 0 to add in distances
-    //vector<double> zero(cities.size(), 0);
-    //distances.push_back(zero);
-    for (int i = 0; i < (int)cities.size(); i++) {
-        vector<double> distancesToCities;
-        for (int j = 0; j < (int)cities.size(); j++) {
-            if (i == 0 || j == 0) {
-                distancesToCities.push_back(0);
-                continue;
-            }
-            if (i > j) {
-                // if i > j, the distance is already calculated
-                distancesToCities.push_back(distances[j][i]);
-                continue;
-            }
-            if (i == j) {
-                distancesToCities.push_back(0);
-                continue;
-            }
-            distancesToCities.push_back(cities[i].returnDistanceTo(j));
-        }
-        // print distancesToCities
-        distances.push_back(distancesToCities);
-    }
-
-    return distances;
-    
-}
-
-vector<int> selectCandidates(int numCities, int currentCity, vector<City> cities, vector<int> path) {
+// the GRASP metaheuristic uses a constructive heuristic with a greedy randomized and adaptive method to find the initial path, based on different number of candidates chosen randomly
+vector<int> Utils::selectCandidates(int numCities, int currentCity, vector<City> cities, vector<int> path, double alpha) {
     vector<pair<int, double>> candidates;  // {cityId, distance}
     //create candidates list based on the current city
 
@@ -57,7 +25,6 @@ vector<int> selectCandidates(int numCities, int currentCity, vector<City> cities
     // find the size of the candidates list based on cmin + (cmax - cmin) * alpha
     double cmin = candidates[0].second;
     double cmax = candidates[candidates.size() - 1].second;
-    double alpha = 0.7;
     double size = cmin + (cmax - cmin) * alpha;
 
     vector<int> selectedCandidates;
@@ -74,7 +41,7 @@ vector<int> selectCandidates(int numCities, int currentCity, vector<City> cities
 
 }
 
-double Utils::findPath(int initialCityId, vector<City> cities, int numCities) {
+double Utils::findPath(int initialCityId, vector<City> cities, int numCities, double alpha) {
     vector<int> path;
     this->path = path;
 
@@ -84,14 +51,12 @@ double Utils::findPath(int initialCityId, vector<City> cities, int numCities) {
     
     double pathCost = 0;
 
-    // vector<vector<double>> distances = calculateAllDistances(cities);
-
+    // keep the greedy search until all cities are in the path
     while ((int) path.size() < numCities) {
 
-        vector<int> candidatesList = selectCandidates(numCities, currentCityId, cities, path);
+        vector<int> candidatesList = selectCandidates(numCities, currentCityId, cities, path, alpha);
 
         // select random city from candidates list
-
         int nextCityId = candidatesList[rand() % candidatesList.size()];
 
         pathCost += cities[currentCityId].returnDistanceTo(nextCityId);
@@ -104,10 +69,6 @@ double Utils::findPath(int initialCityId, vector<City> cities, int numCities) {
     this->path = path;
 
     pathCost += cities[currentCityId].returnDistanceTo(initialCityId);
-
-    /* for (int i = 0; i < (int)path.size(); i++) {
-        cout << path[i] << " ";
-    } */
 
     return pathCost;
 }
@@ -221,12 +182,9 @@ double Utils::storeCities(ifstream& inputFile, int numCities, string distance_ty
 }
 
 // constructive heuristic to find the initial path using the nearest neighbor algorithm (greedy)
-double Utils::constructive_heuristic(int numCities, bool useCenterCity) {
+double Utils::constructive_heuristic(int numCities, bool useCenterCity, double alpha) {
 
     vector<City> cities;
-    /* cities = this->receiveCoordinatesParameters(inputFile, numCities, distance_type);
-
-    this->cities = cities; */
 
     cities = this->getCities();
 
@@ -235,7 +193,7 @@ double Utils::constructive_heuristic(int numCities, bool useCenterCity) {
         initialCityId = this->findCenterCity(cities, numCities);
 
 
-    double pathCost = this->findPath(initialCityId, cities, numCities);
+    double pathCost = this->findPath(initialCityId, cities, numCities, alpha);
 
     this->pathCost = pathCost;
 
@@ -341,59 +299,4 @@ double Utils::three_opt(vector<City> cities) {
 
     return this->pathCost;
 }
-
-// double bridge heuristic to improve the path. Runs over all possible 4-tuple of edges and tries to swap them to improve the path cost. The double bridge replace the edges using a cross strategy 
-double Utils::double_bridge(vector<City> cities) {
-
-    vector<int> initialPath = this->path;
-
-    double newPathCost = this->pathCost + 1;
-    vector<int> newPath = initialPath;
-
-    int tries = 0;
-
-    for (int i = 0; i < (int)initialPath.size()  ; i++) {
-
-        for (int j = i; j < (int) initialPath.size() ; j++) {
-            
-            for (int k = j; k < (int) initialPath.size() ; k++) {
-            
-                for (int l = k; l < (int) initialPath.size() ; l++) {
-                    
-                    if (i == j || j == k || i == k || i == l || j == l || k == l)
-                        continue;
-
-                    newPath = initialPath;
-
-                    tries++;
-                    int temp = newPath[i];
-                    int temp2 = newPath[l];
-                    newPath[i] = newPath[k];
-                    newPath[l] = newPath[j];
-                    newPath[k] = temp;
-                    newPath[j] = temp2;
-
-                    newPathCost = 0;
-                    for (int i = 0; i < (int)newPath.size() - 1; i++) {
-                        newPathCost += cities[newPath[i]].returnDistanceTo(newPath[i + 1]);
-                    }
-
-                    newPathCost += cities[newPath[newPath.size() - 1]].returnDistanceTo(newPath[0]); // add the distance from the last city to the first one
-
-                    if (newPathCost < this->pathCost) {
-                        this->path = newPath;
-                        this->pathCost = newPathCost;
-
-                        return newPathCost;
-                    }
-                }
-            }
-        }
-    }
-
-    //cout << "Tries: " << tries << endl;
-
-    return this->pathCost;
-}
-
 
