@@ -57,7 +57,7 @@ vector<int> selectCandidates(int numCities, int currentCity, vector<City> cities
     // find the size of the candidates list based on cmin + (cmax - cmin) * alpha
     double cmin = candidates[0].second;
     double cmax = candidates[candidates.size() - 1].second;
-    double alpha = 0.5;
+    double alpha = 0.7;
     double size = cmin + (cmax - cmin) * alpha;
 
     vector<int> selectedCandidates;
@@ -105,9 +105,9 @@ double Utils::findPath(int initialCityId, vector<City> cities, int numCities) {
 
     pathCost += cities[currentCityId].returnDistanceTo(initialCityId);
 
-    for (int i = 0; i < (int)path.size(); i++) {
+    /* for (int i = 0; i < (int)path.size(); i++) {
         cout << path[i] << " ";
-    }
+    } */
 
     return pathCost;
 }
@@ -395,3 +395,5 @@ double Utils::double_bridge(vector<City> cities) {
 
     return this->pathCost;
 }
+
+

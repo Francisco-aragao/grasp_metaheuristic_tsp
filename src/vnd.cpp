@@ -7,12 +7,15 @@ using namespace std;
 namespace fs = std::filesystem;
 
 Utils utils;
-const int GRASP_ITERATIONS = 10; // Number of GRASP iterations
+const int GRASP_ITERATIONS = 5; // Number of GRASP iterations
 
 void grasp(ifstream& inputFile, bool useCenterCity) {
     double bestPathCost = std::numeric_limits<double>::infinity();
     vector<int> bestPath;
     vector<City> bestCities;
+    std::clock_t start = std::clock();
+    double totalElapsedTime = 0;
+    double totalPathCost = 0;
 
     // Read and process the input file
     vector<string> res = utils.findPathInfo(inputFile);
@@ -23,6 +26,8 @@ void grasp(ifstream& inputFile, bool useCenterCity) {
 
     
     for (int iteration = 0; iteration < GRASP_ITERATIONS; iteration++) {
+        start = std::clock();  
+
         cout << "GRASP Iteration " << iteration + 1 << ":\n";
 
 
@@ -73,7 +78,19 @@ void grasp(ifstream& inputFile, bool useCenterCity) {
         }
 
         cout << "Final Path Cost: " << pathCost << "\n";
+        double VNDTime = double(std::clock() - start) / CLOCKS_PER_SEC;
+
+        totalElapsedTime += VNDTime;
+        totalPathCost += pathCost;
+
+        cout << "VND Time: " << VNDTime << " seconds\n";
+        
     }
+    
+    double avgPathCost = totalPathCost / GRASP_ITERATIONS;
+    double avgElapsedTime = totalElapsedTime / GRASP_ITERATIONS;
+    cout << "Average Path Cost: " << avgPathCost << "\n";
+    cout << "Average Elapsed Time: " << avgElapsedTime << " seconds\n";
 
     // Output the best solution found
     cout << "\nBest Solution Found:\n";
